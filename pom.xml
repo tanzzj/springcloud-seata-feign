@@ -93,12 +93,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.netzoom</groupId>
-			<artifactId>common</artifactId>
-			<version>1.15</version>
-		</dependency>
-
-		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-alibaba-seata</artifactId>
 			<version>2.2.0.RELEASE</version>
