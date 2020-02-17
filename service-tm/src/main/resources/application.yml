@@ -1,0 +1,17 @@
+server:
+  port: 7700
+  tomcat.uri-encoding: utf-8
+
+spring:
+  application:
+    name: service-tm
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/seata_test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username:
+    password:
+    type: com.alibaba.druid.pool.DruidDataSource
+  cloud:
+    nacos:
+      discovery:
+        server-addr:
