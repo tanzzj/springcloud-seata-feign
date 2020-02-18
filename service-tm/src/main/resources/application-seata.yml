@@ -4,7 +4,7 @@ seata:
   tx-service-group: seataGroup-${seata.application-id}
   service:
     vgroup-mapping: default
-    grouplist: 114.116.14.26:8091
+    grouplist: 127.0.0.1:8091
     disable-global-transaction: false
   config:
     type: file
