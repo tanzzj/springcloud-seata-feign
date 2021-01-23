@@ -12,7 +12,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @author tanzj
  */
 @EnableFeignClients
-@EnableDiscoveryClient
 @SpringBootApplication
 public class ServiceTmApplication {
 

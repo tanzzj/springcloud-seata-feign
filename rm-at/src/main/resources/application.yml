@@ -1,10 +1,10 @@
 server:
-  port: 7700
+  port: 7900
   tomcat.uri-encoding: utf-8
 
 spring:
   application:
-    name: service-tm
+    name: service-at
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://127.0.0.1:3306/seata_test?useUnicode=true&characterEncoding=utf-8&useSSL=false
@@ -21,7 +21,7 @@ seata:
   application-id: ${spring.application.name}
   tx-service-group: seata-demo
   service:
-    vgroup-Mapping:
+    vgroupMapping:
       seata-demo: guangzhou
   config:
     type: file
@@ -31,5 +31,7 @@ seata:
     type: nacos
     nacos:
       cluster: default
+      group: DEFAULT_GROUP
+      application: seata-server
       server-addr:
       namespace: 8f11aeb1-5042-461b-b88b-d47a7f7e01c0

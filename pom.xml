@@ -16,8 +16,8 @@
     <description>Demo project for Spring Boot</description>
     <modules>
         <module>service-tm</module>
-        <module>service-tcc</module>
-        <module>service-at</module>
+        <module>rm-tcc</module>
+        <module>rm-at</module>
     </modules>
 
     <properties>
@@ -26,10 +26,40 @@
         <alibaba.fastjson.version>1.2.61</alibaba.fastjson.version>
         <spring-cloud.version>Greenwich.SR1</spring-cloud.version>
         <spring-cloud-alibaba-dependencies.version>0.9.0.RELEASE</spring-cloud-alibaba-dependencies.version>
-        <apache.poi.version>3.9</apache.poi.version>
-        <dockerfile-maven-version>1.4.13</dockerfile-maven-version>
+        <seata-all.version>1.4.0</seata-all.version>
+        <seata.version>1.4.0</seata.version>
+        <seata-spring-boot.version>1.4.0</seata-spring-boot.version>
+        <seata-cloud.version>2.2.0.RELEASE</seata-cloud.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+            <version>${seata-cloud.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.seata</groupId>
+                    <artifactId>seata-spring-boot-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.seata</groupId>
+                    <artifactId>seata-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-spring-boot-starter</artifactId>
+            <version>${seata-spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>${seata-all.version}</version>
+        </dependency>
+
         <!--springboot相关-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -90,12 +120,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>1.1.21</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.alibaba.cloud</groupId>
-			<artifactId>spring-cloud-alibaba-seata</artifactId>
-			<version>2.2.0.RELEASE</version>
 		</dependency>
 
 	</dependencies>
