@@ -20,10 +20,9 @@ public class TccServiceImpl implements  TccService {
     @Autowired
     TccDAO tccDAO;
 
-
     /**
      * tcc服务t（try）方法
-     * 实际业务方法
+     * 根据实际业务场景选择实际业务执行逻辑或者资源预留逻辑
      *
      * @param params - name
      * @return String
@@ -31,15 +30,17 @@ public class TccServiceImpl implements  TccService {
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public String insert(Map<String, String> params) {
-        log.info("------------------> xid = " + RootContext.getXID());
+        log.info("xid = " + RootContext.getXID());
+        //todo 实际的操作，或操作MQ、redis等
         tccDAO.insert(params);
+        //放开以下注解抛出异常
         //throw new RuntimeException("服务tcc测试回滚");
         return "success";
     }
 
     /**
      * tcc服务 confirm方法
-     * 可以空确认
+     * 若一阶段采用资源预留，在二阶段确认时要提交预留的资源
      *
      * @param context 上下文
      * @return boolean
@@ -47,6 +48,7 @@ public class TccServiceImpl implements  TccService {
     @Override
     public boolean commitTcc(BusinessActionContext context) {
         log.info("xid = " + context.getXid() + "提交成功");
+        //todo 若一阶段资源预留，这里则要提交资源
         return true;
     }
 
@@ -59,12 +61,7 @@ public class TccServiceImpl implements  TccService {
     @Override
     public boolean cancel(BusinessActionContext context) {
         //todo 这里写中间件、非关系型数据库的回滚操作
-        System.out.println("please rollback this data:" + context.getActionContext("params"));
-
-        //模拟进行数据库操作
-        Map<String, String> params = new HashMap<>(1);
-        params.put("name", "rollback.result");
-        tccDAO.insert(params);
+        System.out.println("please manually rollback this data:" + context.getActionContext("params"));
         return true;
     }
 }

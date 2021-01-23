@@ -20,10 +20,10 @@ public interface TccService {
 
     /**
      * 定义两阶段提交
-     * name = insert为一阶段try方法
+     * name = 该tcc的bean名称,全局唯一
      * commitMethod = commit 为二阶段确认方法
      * rollbackMethod = rollback 为二阶段取消方法
-     * BusinessActionContextParameter注解 可传递参数到二阶段方法
+     * BusinessActionContextParameter注解 传递参数到二阶段中
      *
      * @param params  -入参
      * @return String
@@ -43,7 +43,7 @@ public interface TccService {
     boolean commitTcc(BusinessActionContext context);
 
     /**
-     * 二阶段取消方法
+     * 二阶段回滚方法
      *
      * @param context 上下文
      * @return boolean
