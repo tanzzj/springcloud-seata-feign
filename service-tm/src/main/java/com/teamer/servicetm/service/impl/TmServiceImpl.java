@@ -37,8 +37,8 @@ public class TmServiceImpl implements TmService {
      * @return String
      */
     @Override
-    @Transactional
     @GlobalTransactional(timeoutMills = 60000 * 2)
+    @Transactional
     public String insertTcc(Map<String, String> params) {
         log.info("------------------> xid = " + RootContext.getXID());
         tmDAO.insert(params);
@@ -55,8 +55,8 @@ public class TmServiceImpl implements TmService {
      * @return String
      */
     @Override
-    @Transactional
     @GlobalTransactional(timeoutMills = 60000 * 2)
+    @Transactional
     public String insertAt(Map<String, String> params) {
         log.info("------------------> xid = " + RootContext.getXID());
         tmDAO.insert(params);

@@ -1,5 +1,6 @@
 package com.teamer.servicetcc.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.teamer.servicetcc.dao.TccDAO;
 import com.teamer.servicetcc.service.TccService;
 import io.seata.core.context.RootContext;
@@ -31,11 +32,12 @@ public class TccServiceImpl implements  TccService {
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public String insert(Map<String, String> params) {
         log.info("xid = " + RootContext.getXID());
+        params.put("123","456");
         //todo 实际的操作，或操作MQ、redis等
-        tccDAO.insert(params);
+//        tccDAO.insert(params);
         //放开以下注解抛出异常
-        //throw new RuntimeException("服务tcc测试回滚");
-        return "success";
+        throw new RuntimeException("服务tcc测试回滚");
+//        return "success";
     }
 
     /**

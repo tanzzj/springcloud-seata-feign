@@ -18,7 +18,6 @@ public class AtServiceImpl implements AtService {
     AtDAO atDAO;
 
     @Override
-    @GlobalTransactional(timeoutMills = 60000 * 2)
     public String insert(Map<String, String> params) {
         log.info("------------------> xid = " + RootContext.getXID());
         atDAO.insert(params);

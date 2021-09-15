@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @author tanzj
  */
-@FeignClient(value = "service-at")
+@FeignClient(value = "rm-at")
 public interface ServiceATFeign {
 
     /**

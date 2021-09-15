@@ -10,7 +10,7 @@ import java.util.Map;
  *
  * @author tanzj
  */
-@FeignClient(value = "service-tcc")
+@FeignClient(value = "rm-tcc")
 public interface ServiceTCCFeign {
 
     /**
